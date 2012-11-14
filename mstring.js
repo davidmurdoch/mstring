@@ -7,16 +7,16 @@ module.exports = function(f){
     throw new Error(errmsg+f)
   }
 
-  var fs = f.toString()
-  var m  = fs.match(/^function\s*\(\)\s*\{\s*\/\*\*\*\n([\s\S]*)\n\*\*\*\/\s*\}$/) 
+  var fs = f.toString();
+  var m  = fs.match(/^function\s*\(\)\s*\{\s*\/\*\*\*\n+([\s\S]*)\n\s*\*\*\*\/\s*\}$/);
   if( m && _.isString(m[1]) ) {
-    return m[1]
+    return m[1];
   }
   else throw new Error(errmsg+f);
 }
 
 
-var _ = {}
+var _ = {};
 _.isFunction = function(obj) {
   return !!(obj && obj.constructor && obj.call && obj.apply);
 };
